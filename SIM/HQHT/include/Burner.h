@@ -7,6 +7,8 @@ class Burner
 		Burner();
 		~Burner();
 
+		void Init();
+
 	private:
 };
 

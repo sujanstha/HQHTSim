@@ -7,6 +7,8 @@ class LevelSensor
 		LevelSensor();
 		~LevelSensor();
 
+		void Init();
+
 	private:
 
 };

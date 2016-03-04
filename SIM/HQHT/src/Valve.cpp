@@ -1,5 +1,7 @@
 #include "Valve.h"		
 
+#include <stdio.h>
+
 Valve::Valve()
 {
 
@@ -11,9 +13,9 @@ Valve::~Valve()
 }
 
 /* Initialization */
-void Init()
+void Valve::Init()
 {
-	
+
 }
 
 /* Opens valve */

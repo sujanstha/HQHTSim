@@ -10,3 +10,8 @@ LevelSensor::~LevelSensor()
 {
 
 }
+
+void LevelSensor::Init()
+{
+
+}

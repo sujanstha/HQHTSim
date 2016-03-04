@@ -22,6 +22,7 @@ int main(int argc, char** argv)
 
 	// Main Simulation
 	Simulation Sim;
+	Sim.Init();
 
 	Sim.Run();
 }
