@@ -1,0 +1,812 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Renderers",
+				"Renderers	(ComponentSystems.cpp)"
+			],
+			[
+				"salarypara",
+				"salaryParameter"
+			],
+			[
+				"salaryp",
+				"salaryParameter"
+			],
+			[
+				"bullets",
+				"bullets_"
+			],
+			[
+				"glClearColor",
+				"glClearColor(GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha)	void"
+			],
+			[
+				"Upadte",
+				"Update(const std::vector<std::string> &levelData, std::vector<Human *> &humans, std::vector<Zombie *> &zombies)	void"
+			],
+			[
+				"cam",
+				"camera_"
+			],
+			[
+				"spee",
+				"speed_"
+			],
+			[
+				"bulletsp",
+				"bulletSpeed"
+			],
+			[
+				"bulletda",
+				"bulletDamage"
+			],
+			[
+				"speed",
+				"speed"
+			],
+			[
+				"buletd",
+				"bulletDamage"
+			],
+			[
+				"sprea",
+				"spread_"
+			],
+			[
+				"bulletspers",
+				"bulletsPerShot_"
+			],
+			[
+				"positio",
+				"position_"
+			],
+			[
+				"Level",
+				"Level(const std::string &fileName)	constructor"
+			],
+			[
+				"colorp",
+				"colorProgram_	int"
+			],
+			[
+				"Spark",
+				"Spark	namespace"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "src/main.cpp",
+			"settings":
+			{
+				"buffer_size": 370,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/C++Projects/VS/HQHT/proc/build.bat",
+			"settings":
+			{
+				"buffer_size": 143,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/C++Projects/VS/HQHT/proc/rel.bat",
+			"settings":
+			{
+				"buffer_size": 146,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/User/SDL_Build.sublime-build",
+					""
+				],
+				[
+					"Packages/User/SDL_Build.sublime-build",
+					"all"
+				],
+				[
+					"Packages/User/SDL_Build.sublime-build",
+					"run"
+				]
+			],
+			[
+				"Packages/User/SDL_Build.sublime-build",
+				"all"
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 500.0,
+		"last_filter": "pack",
+		"selected_items":
+		[
+			[
+				"pack",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: List Packages"
+			],
+			[
+				"sub",
+				"Preferences: SublimeClang Settings – User"
+			],
+			[
+				"Subl",
+				"Preferences: SublimeClang Settings – Default"
+			],
+			[
+				"packi",
+				"Package Control: Install Package"
+			],
+			[
+				"pac",
+				"Preferences: Browse Packages"
+			]
+		],
+		"width": 559.0
+	},
+	"console":
+	{
+		"height": 113.0,
+		"history":
+		[
+			"sublime.log_input(True)",
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/D/C++Projects/VS/HQHT/HQHT",
+		"/D/C++Projects/VS/HQHT/HQHT/src"
+	],
+	"file_history":
+	[
+		"/D/C++Projects/VS/HQHT/proc/build.bat",
+		"/D/C++Projects/VS/3DEnjon/proc/dump.txt",
+		"/D/C++Projects/VS/3DEnjon/IsoARPG/include/ECS/AttributeSystem.h",
+		"/D/C++Projects/VS/3DEnjon/src/ParticleEngine2D.cpp",
+		"/D/C++Projects/VS/3DEnjon/include/Graphics/ParticleEngine2D.h",
+		"/D/C++Projects/VS/3DEnjon/IsoARPG/include/ECS/ComponentSystems.h",
+		"/D/C++Projects/VS/3DEnjon/src/Font.cpp",
+		"/D/C++Projects/VS/3DEnjon/src/AABB.cpp",
+		"/D/C++Projects/VS/3DEnjon/IsoARPG/include/ECS/PlayerControllerSystem.h",
+		"/D/C++Projects/VS/3DEnjon/IsoARPG/src/ECS/CollisionSystem.cpp",
+		"/D/C++Projects/VS/3DEnjon/IsoARPG/src/ECS/Animation2DSystem.cpp",
+		"/D/C++Projects/VS/3DEnjon/IsoARPG/src/ECS/Transform3DSystem.cpp",
+		"/D/C++Projects/VS/3DEnjon/shaders/basic.v.glsl",
+		"/D/C++Projects/VS/3DEnjon/shaders/basic.f.glsl",
+		"/D/C++Projects/VS/3DEnjon/IsoARPG/src/SpatialHash.cpp",
+		"/D/C++Projects/VS/3DEnjon/IsoARPG/src/Level.cpp",
+		"/D/C++Projects/VS/3DEnjon/IsoARPG/include/Level.h",
+		"/D/C++Projects/VS/3DEnjon/IsoARPG/src/main.cpp",
+		"/D/C++Projects/Tutorials/Help/main.c",
+		"/D/C++Projects/VS/3DEnjon/src/SpriteBatch.cpp",
+		"/D/C++Projects/VS/3DEnjon/include/Graphics/SpriteBatch.h",
+		"/D/C++Projects/VS/3DEnjon/IsoARPG/src/ECS/ComponentSystems.cpp",
+		"/D/C++Projects/VS/3DEnjon/include/Defines.h",
+		"/D/C++Projects/VS/3DEnjon/include/Enjon.h",
+		"/D/Programs/Brogue/Brogue-windows-v1.7.4/Brogue Source/BrogueCode/Random.c",
+		"/D/C++Projects/VS/3DEnjon/shaders/atlas.f.glsl",
+		"/D/C++Projects/VS/3DEnjon/src/Window.cpp",
+		"/D/C++Projects/VS/3DEnjon/shaders/text.f.glsl",
+		"/D/C++Projects/VS/3DEnjon/shaders/text.v.glsl",
+		"/D/C++Projects/VS/3DEnjon/include/Graphics/Font.h",
+		"/D/C++Projects/VS/3DEnjon/include/Utils/Timing.h",
+		"/D/C++Projects/VS/3DEnjon/src/Timing.cpp",
+		"/D/C++Projects/VS/3DEnjon/deps/include/STB/stb_truetype.h",
+		"/D/C++Projects/VS/3DEnjon/proc/all.bat",
+		"/D/C++Projects/VS/3DEnjon/proc/bd.bat",
+		"/D/C++Projects/VS/3DEnjon/proc/proc/all",
+		"/D/C++Projects/VS/3DEnjon/include/Game.h",
+		"/D/C++Projects/VS/3DEnjon/IsoARPG/src/ECS/PlayerControllerSystem.cpp",
+		"/D/C++Projects/VS/3DEnjon/include/Math/Vec2.h",
+		"/D/C++Projects/VS/3DEnjon/include/Graphics/Window.h",
+		"/D/C++Projects/VS/3DEnjon/IsoARPG/include/ECS/Masks.h",
+		"/D/C++Projects/VS/3DEnjon/IsoARPG/include/SpatialHash.h",
+		"/D/C++Projects/VS/3DEnjon/IsoARPG/include/ECS/Components.h",
+		"/D/C++Projects/VS/3DEnjon/include/Math/Random.h",
+		"/D/C++Projects/VS/3DEnjon/include/Math/Mat4.h",
+		"/D/C++Projects/VS/3DEnjon/IsoARPG/profiles/Animations/Player/player.txt",
+		"/D/C++Projects/G++/Projects/ZombieChallenge/src/Player.cpp",
+		"/D/C++Projects/VS/3DEnjon/IsoARPG/SCRUM.txt",
+		"/D/C++Projects/G++/Projects/ZombieChallenge/src/Game.cpp",
+		"/D/C++Projects/G++/Projects/ZombieChallenge/src/Gun.cpp",
+		"/D/C++Projects/G++/Projects/ZombieChallenge/src/Bullet.cpp",
+		"/D/C++Projects/VS/3DEnjon/src/Camera2D.cpp",
+		"/D/C++Projects/VS/3DEnjon/include/Graphics/Camera2D.h",
+		"/D/C++Projects/VS/3DEnjon/IsoARPG/include/ECS/CollisionSystem.h",
+		"/D/C++Projects/VS/3DEnjon/IsoARPG/src/ECS/AIControllerSystem.cpp",
+		"/D/C++Projects/VS/3DEnjon/IsoARPG/include/ECS/AIControllerSystem.h",
+		"/D/C++Projects/VS/3DEnjon/IsoARPG/src/ECS/LabelSystem.cpp",
+		"/D/C++Projects/VS/3DEnjon/IsoARPG/include/ECS/LabelSystem.h",
+		"/D/C++Projects/VS/3DEnjon/IsoARPG/src/ECS/InventorySystem.cpp",
+		"/D/C++Projects/VS/3DEnjon/IsoARPG/src/ECS/Renderer2DSystem.cpp",
+		"/D/C++Projects/VS/3DEnjon/IsoARPG/include/ECS/Renderer2DSystem.h",
+		"/D/C++Projects/VS/3DEnjon/IsoARPG/include/ECS/InventorySystem.h",
+		"/D/C++Projects/VS/3DEnjon/IsoARPG/include/ECS/Animation2DSystem.h",
+		"/D/C++Projects/VS/3DEnjon/IsoARPG/include/ECS/Transform3DSystem.h",
+		"/D/C++Projects/VS/3DEnjon/IsoARPG/include/ECS/Entity.h",
+		"/D/C++Projects/VS/3DEnjon/IsoARPG/src/ECS/TestSystem.cpp",
+		"/D/C++Projects/VS/3DEnjon/IsoARPG/include/ECS/TestSystem.h",
+		"/D/C++Projects/VS/3DEnjon/IsoARPG/src/ECS/AttributeSystem.cpp",
+		"/D/C++Projects/VS/3DEnjon/IsoARPG/src/Animation.cpp",
+		"/D/C++Projects/VS/3DEnjon/IsoARPG/include/Animation.h",
+		"/D/C++Projects/VS/3DEnjon/include/Physics/AABB.h",
+		"/D/C++Projects/VS/3DEnjon/include/Math/Maths.h",
+		"/D/C++Projects/VS/3DEnjon/IsoARPG/src/AnimationManager.cpp",
+		"/D/C++Projects/VS/3DEnjon/IsoARPG/include/AnimationManager.h",
+		"/D/C++Projects/VS/3DEnjon/src/ImageLoader.cpp",
+		"/D/C++Projects/VS/IsoARPG/src/Game.cpp",
+		"/D/C++Projects/VS/IsoARPG/src/Enemy.cpp",
+		"/D/C++Projects/VS/3DEnjon/include/Graphics/Color.h",
+		"/D/C++Projects/VS/3DEnjon/src/ShaderManager.cpp",
+		"/D/C++Projects/VS/3DEnjon/include/Graphics/SpriteSheet.h",
+		"/D/C++Projects/VS/3DEnjon/include/Graphics/Vertex.h",
+		"/D/C++Projects/VS/3DEnjon/proc/build.bat",
+		"/D/C++Projects/VS/Enjon/src/ShaderManager.cpp",
+		"/D/C++Projects/VS/Enjon/include/Graphics/ShaderManager.h",
+		"/D/C++Projects/VS/IsoARPG/src/main.cpp",
+		"/D/C++Projects/VS/3DEnjon/src/Graphics/Camera3D.cpp",
+		"/D/C++Projects/VS/3DEnjon/include/Graphics/Camera3D.h",
+		"/D/C++Projects/VS/3DEnjon/IsoARPG/src/src",
+		"/D/C++Projects/VS/3DEnjon/src/main.cpp",
+		"/D/HTMLProjects/StartAngular/amd/src/components/data/TodoListService.js",
+		"/D/HTMLProjects/StartAngular/amd/src/app/controllers/MapController.js",
+		"/D/HTMLProjects/StartAngular/amd/src/app/views/partials/map.html",
+		"/D/HTMLProjects/StartAngular/amd/src/components/directives/testDirective.js",
+		"/D/HTMLProjects/StartAngular/amd/src/app/controllers/MainController.js",
+		"/D/HTMLProjects/StartAngular/amd/src/components/data/MessagesService.js",
+		"/D/HTMLProjects/StartAngular/amd/src/components/data/PerformanceService.js",
+		"/D/HTMLProjects/StartAngular/amd/src/components/data/NotificationsService.js",
+		"/D/HTMLProjects/StartAngular/amd/src/index.html",
+		"/D/HTMLProjects/StartAngular/amd/src/app/controllers/ProfileController.js",
+		"/D/HTMLProjects/StartAngular/amd/src/lib/angular-simple-logger.js",
+		"/D/HTMLProjects/StartAngular/amd/src/lib/angular-google-maps.js",
+		"/D/HTMLProjects/StartAngular/amd/src/app/controllers/TestController.js",
+		"/D/HTMLProjects/StartAngular/amd/src/app/views/test.html",
+		"/D/HTMLProjects/StartAngular/amd/src/app/views/map.html",
+		"/D/HTMLProjects/StartAngular/amd/src/lib/lodash.js",
+		"/D/C++Projects/G++/Projects/ZombieChallenge/src/Agent.cpp",
+		"/D/HTMLProjects/StartAngular/amd/node_modules/pdf2json/pdf2json.js",
+		"/D/HTMLProjects/StartAngular/amd/node_modules/pdf2json/pdfparser.js",
+		"/D/HTMLProjects/StartAngular/amd/src/app/views/profile.html",
+		"/D/HTMLProjects/StartAngular/amd/src/app/stylesheets/_custom.scss",
+		"/D/HTMLProjects/StartAngular/amd/src/components/directives/notificationDirective.js",
+		"/D/HTMLProjects/StartAngular/amd/src/components/directives/notificationsDirective",
+		"/D/HTMLProjects/StartAngular/amd/src/components/directives/messagesSection.js",
+		"/D/HTMLProjects/StartAngular/amd/src/app/views/partials/messages.html",
+		"/D/HTMLProjects/StartAngular/amd/src/app/index.js",
+		"/D/HTMLProjects/StartAngular/amd/src/components/data/NavService.js",
+		"/D/HTMLProjects/StartAngular/amd/src/app/views/partials/memory.html",
+		"/D/HTMLProjects/StartAngular/amd/src/app/controllers/MemoryController.js",
+		"/D/HTMLProjects/StartAngular/amd/amd/src/index.html",
+		"/D/JavaProjects/FinalPractice/KiloConverterWindow.java",
+		"/D/Documents/School/OOP/Project4/proj3-files-v2/proj3Files/src/MainFrame.java",
+		"/D/JavaProjects/FinalPractice/Pair.java",
+		"/D/JavaProjects/FinalPractice/OrderedPair.java",
+		"/D/JavaProjects/FinalPractice/Test.java",
+		"/D/HTMLProjects/JSPractice/CSVparsing/index.html",
+		"/D/HTMLProjects/ParsePractice/parse-js-blank/sample/parse-js-blank/index.html",
+		"/D/HTMLProjects/JSPractice/CSVparsing/PapaParse-4.1.2/PapaParse-4.1.2/tests/test-cases.js",
+		"/D/HTMLProjects/JSPractice/CSVparsing/PapaParse-4.1.2/PapaParse-4.1.2/tests/test.js"
+	],
+	"find":
+	{
+		"height": 27.0
+	},
+	"find_in_files":
+	{
+		"height": 127.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"Text",
+			"HUDBatch",
+			"PauseFont",
+			"islevel",
+			"ProcessInput",
+			"process",
+			"HUDCamera",
+			"IsoARPG",
+			"SetScale",
+			"WALKPACE",
+			"collidewithenemy",
+			"amountdrawn",
+			"= ",
+			"intensity",
+			"LEVELSIZE",
+			"LEVELSIZZE",
+			"amountdrawn",
+			"LEVELSIZE",
+			"amountdrawn",
+			"collidewithenemy",
+			"BoxCoords",
+			" + 90",
+			"levelsize",
+			"AimAngle",
+			"Position",
+			"shadow",
+			"player shadow",
+			"ArrowVelocity",
+			" - 4",
+			" + 4",
+			"LEVELSIZE",
+			"printf",
+			"99",
+			"levelSize",
+			"Radius",
+			"C",
+			"20",
+			"R",
+			"Drawfire",
+			"DrawFire",
+			"x",
+			"\n	",
+			"tile.",
+			"-",
+			"height",
+			"width",
+			"20",
+			"tilewidth",
+			"DrawFire",
+			"BACK_TO_FRONT",
+			"shakescreen",
+			"screenshake",
+			"CollidewithEnemy",
+			"4",
+			"TileWidth",
+			"SpriteBatch",
+			"entitybatch.add",
+			".renderbatch",
+			"tile.",
+			"printf",
+			"20",
+			".",
+			"->",
+			".",
+			"->",
+			".",
+			"->",
+			"level.init",
+			"Tiles",
+			".",
+			"Rendering",
+			"// Add Tile",
+			"// Add ",
+			"YPos",
+			"XPos",
+			"	}",
+			"addparticle",
+			"Random::Roll",
+			"TestParticleBatch",
+			");",
+			"addparticle",
+			"Collidewithitem",
+			"addparticle",
+			"LightFlameCounter",
+			"100",
+			"SmokeCounter",
+			"InnerFlameCounter",
+			"addparticle",
+			"isLevel",
+			"Pause",
+			"isPaused",
+			"isLevel",
+			"use",
+			"addparticle",
+			"ParticleEngine",
+			"RenderBatch",
+			"addpartic",
+			"Shake",
+			"PTex",
+			"Math",
+			"Random::Roll",
+			"amountdrawn",
+			"				",
+			"addparticle",
+			"assets/textures/orb",
+			"addparticle",
+			"EG()",
+			"EM",
+			"p",
+			".",
+			"p.",
+			"->",
+			"const",
+			"uint8",
+			"Limiter.Init",
+			"FPSString",
+			"Balls",
+			"FPSString",
+			"PrintText",
+			"CorbertRegular",
+			"Zombie_16",
+			"PrintText",
+			"Character",
+			"Font",
+			"map",
+			"Color",
+			"PrintText",
+			"Sample"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "src/main.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 370,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								155,
+								155
+							]
+						],
+						"settings":
+						{
+							"bs_sintax": "c++",
+							"buffer_scroll_name": "32f2a8a1",
+							"c_time":
+							[
+								128,
+								3,
+								99,
+								100,
+								97,
+								116,
+								101,
+								116,
+								105,
+								109,
+								101,
+								10,
+								100,
+								97,
+								116,
+								101,
+								116,
+								105,
+								109,
+								101,
+								10,
+								113,
+								0,
+								67,
+								10,
+								7,
+								224,
+								3,
+								3,
+								20,
+								44,
+								20,
+								4,
+								85,
+								81,
+								113,
+								1,
+								133,
+								113,
+								2,
+								82,
+								113,
+								3,
+								46
+							],
+							"spell_check": false,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/D/C++Projects/VS/HQHT/proc/build.bat",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 143,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								136,
+								136
+							]
+						],
+						"settings":
+						{
+							"bs_sintax": "batch file",
+							"buffer_scroll_name": "596e0d39",
+							"c_time":
+							[
+								128,
+								3,
+								99,
+								100,
+								97,
+								116,
+								101,
+								116,
+								105,
+								109,
+								101,
+								10,
+								100,
+								97,
+								116,
+								101,
+								116,
+								105,
+								109,
+								101,
+								10,
+								113,
+								0,
+								67,
+								10,
+								7,
+								224,
+								3,
+								3,
+								20,
+								44,
+								20,
+								12,
+								48,
+								66,
+								113,
+								1,
+								133,
+								113,
+								2,
+								82,
+								113,
+								3,
+								46
+							],
+							"spell_check": false,
+							"syntax": "Packages/Batch File/Batch File.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/D/C++Projects/VS/HQHT/proc/rel.bat",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 146,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								47,
+								47
+							]
+						],
+						"settings":
+						{
+							"bs_sintax": "batch file",
+							"buffer_scroll_name": "21b404da",
+							"c_time":
+							[
+								128,
+								3,
+								99,
+								100,
+								97,
+								116,
+								101,
+								116,
+								105,
+								109,
+								101,
+								10,
+								100,
+								97,
+								116,
+								101,
+								116,
+								105,
+								109,
+								101,
+								10,
+								113,
+								0,
+								67,
+								10,
+								7,
+								224,
+								3,
+								3,
+								20,
+								44,
+								20,
+								12,
+								231,
+								18,
+								113,
+								1,
+								133,
+								113,
+								2,
+								82,
+								113,
+								3,
+								46
+							],
+							"spell_check": false,
+							"syntax": "Packages/Batch File/Batch File.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 46.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.clang":
+	{
+		"height": 138.0
+	},
+	"output.exec":
+	{
+		"height": 260.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/Python/Python.sublime-build",
+	"project": "HQHTProject.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 289.0,
+	"status_bar_visible": false,
+	"template_settings":
+	{
+	}
+}

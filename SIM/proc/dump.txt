@@ -1,0 +1,68 @@
+SpriteSheetManager.cpp
+..\src\SpriteSheetManager.cpp(9) : error C2664: 'void Enjon::Graphics::SpriteSheetManager::AddSpriteSheet(std::unordered_map<std::string,Enjon::Graphics::SpriteSheet,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>> &,std::string,Enjon::Graphics::GLTexture,Enjon::Math::iVec2)' : cannot convert argument 1 from 'std::unordered_map<std::string,Enjon::Graphics::SpriteSheet,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>> *' to 'std::unordered_map<std::string,Enjon::Graphics::SpriteSheet,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>> &'
+        with
+        [
+            _Kty=std::string
+,            _Ty=Enjon::Graphics::SpriteSheet
+        ]
+..\src\SpriteSheetManager.cpp(10) : error C2664: 'void Enjon::Graphics::SpriteSheetManager::AddSpriteSheet(std::unordered_map<std::string,Enjon::Graphics::SpriteSheet,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>> &,std::string,Enjon::Graphics::GLTexture,Enjon::Math::iVec2)' : cannot convert argument 1 from 'std::unordered_map<std::string,Enjon::Graphics::SpriteSheet,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>> *' to 'std::unordered_map<std::string,Enjon::Graphics::SpriteSheet,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>> &'
+        with
+        [
+            _Kty=std::string
+,            _Ty=Enjon::Graphics::SpriteSheet
+        ]
+..\src\SpriteSheetManager.cpp(30) : error C2065: 'PlayerAnimations' : undeclared identifier
+..\src\SpriteSheetManager.cpp(30) : error C2228: left of '.find' must have class/struct/union
+        type is 'unknown-type'
+..\src\SpriteSheetManager.cpp(31) : error C3536: 'it': cannot be used before it is initialized
+..\src\SpriteSheetManager.cpp(31) : error C2065: 'PlayerAnimations' : undeclared identifier
+..\src\SpriteSheetManager.cpp(31) : error C2228: left of '.end' must have class/struct/union
+        type is 'unknown-type'
+..\src\SpriteSheetManager.cpp(31) : error C2227: left of '->second' must point to class/struct/union/generic type
+        type is 'int'
+Generating Code...
+Skipping... (no relevant changes detected)
+Transform3DSystem.cpp
+Renderer2DSystem.cpp
+PlayerControllerSystem.cpp
+LabelSystem.cpp
+InventorySystem.cpp
+EntityFactory.cpp
+Entity.cpp
+EffectSystem.cpp
+ComponentSystems.cpp
+CollisionSystem.cpp
+AttributeSystem.cpp
+Animation2DSystem.cpp
+AIControllerSystem.cpp
+SpatialHash.cpp
+main.cpp
+Loot.cpp
+Level.cpp
+AnimationManager.cpp
+Animation.cpp
+Camera3D.cpp
+Vec4.cpp
+Vec3.cpp
+Vec2.cpp
+Mat4.cpp
+Window.cpp
+Timing.cpp
+TextureCache.cpp
+SpriteBatch.cpp
+Sprite.cpp
+ShaderManager.cpp
+ResourceManager.cpp
+picoPNG.cpp
+ParticleEngine2D.cpp
+IOManager.cpp
+InputManager.cpp
+ImageLoader.cpp
+GLSLProgram.cpp
+Game.cpp
+FontManager.cpp
+Font.cpp
+Errors.cpp
+Enjon.cpp
+Camera2D.cpp
+AABB.cpp
