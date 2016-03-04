@@ -1,28 +1,30 @@
 #include "Simulation.h"
 
+#include <stdio.h>
 
-void Init()
+
+void Simulation::Init()
 {
-
+	
 }
 
-void InitSystems()
+void Simulation::InitSystems()
 {
-
+	
 }
 
-void Run()
+void Simulation::Run()
 {
-
+	printf("Running...\n");
 }
 
-void Update()
+void Simulation::Update()
 {
 
 }
 
 // If we use graphics...
-void Render()
+void Simulation::Render()
 {
 	
 }

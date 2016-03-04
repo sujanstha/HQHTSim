@@ -3,7 +3,14 @@
 
 class TemperatureSensor
 {
+	public:
+		TemperatureSensor();
+		~TemperatureSensor();
 
+		/* Initialization */
+		void Init();
+
+	private:
 };
 
 #endif

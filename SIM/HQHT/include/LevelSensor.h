@@ -3,6 +3,11 @@
 
 class LevelSensor
 {
+	public:
+		LevelSensor();
+		~LevelSensor();
+
+	private:
 
 };
 

@@ -11,6 +11,7 @@
 #include <stdlib.h>
 
 /* HQHT Includes */
+#include "Simulation.h"
 
 bool isRunning = true;
 
@@ -19,7 +20,10 @@ int main(int argc, char** argv)
 	// Seed random 
 	srand(time(NULL));
 
-	printf("Working!\n");
+	// Main Simulation
+	Simulation Sim;
+
+	Sim.Run();
 }
 
 #endif 

@@ -3,7 +3,11 @@
 
 class Burner
 {
+	public:
+		Burner();
+		~Burner();
 
+	private:
 };
 
 #endif
