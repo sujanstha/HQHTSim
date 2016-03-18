@@ -1,8 +1,14 @@
+@font-face {
+    font-family: BebasNeue;
+    src: url('../fonts/BebasNeue.otf');
+}
+
 body {
 	margin: 0;
 	padding: 0;
 	height: 100%;
 	background-color: #282E3D;
+	font-family: BebasNeue;
 }
 
 .container {
@@ -36,22 +42,51 @@ section.bg {
 #tank #content-level {
 	width: 100%;
 	background-color: #FFD727;
-	height: 20%;
+	height: 34%;
 	position: absolute;
 	bottom: 0px;
 }
 
-#status {
+#system-info {
 	background-color: rgba(0, 0, 0, 0.5);
 	height: 260px; /* height of tank + top margin */
+	color: #C2FCFE;
+	text-transform: uppercase;
+	font-size: 24px;
+	text-shadow: 0px 0px 1px #e5e5e5;
+	text-transform: uppercase;
 }
 
-#status #status-content {
-	color: #BCFAFD;
-	text-transform: uppercase;
+#system-info p {
+	margin: 0px;
+}
+
+#system-info #errors {
+	background-color: rgba(32, 42, 60, 0.63);
+	padding: 10px;
+	border-radius: 1px;
+	box-shadow: 0px 0px 5px #111;
+}
+
+#second-row {
+	text-align: center;
 }
 
 #second-row button {
 	background-color: #6BA6D5;
-	border-radius: 5px; 
+	border-radius: 8px; 
+	border: 0px;
+	padding: 10px 50px;
+	color: #C2FCFE;
+	font-weight: 400;
+	font-size: 42px;
+	box-shadow: 0px 0px 8px #111;
+	margin: 0 auto;
+	text-shadow: 0px 0px 2px #111;
+}
+
+#second-row button.dim {
+	background-color: #313B46; 
+	box-shadow: 0px 0px 8px #272626;
+	color: #7A7A7A;
 }
