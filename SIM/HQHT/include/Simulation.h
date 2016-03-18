@@ -5,10 +5,14 @@
 #include "LevelSensor.h"
 #include "TempSensor.h"
 #include "Burner.h"
+#include "Utils.h"
+
+#include <time.h>
 
 class Simulation
 {
-	public:
+	enum State { RUNNING, EXIT };
+ public:
 		/* Constructor */
 		Simulation(){}
 
@@ -39,6 +43,10 @@ class Simulation
 		Valve m_outputValve2;		
 		Valve m_outputValve3;		
 		Valve m_outputValve4;
+
+		struct Counter m_Counter;
+
+		State m_State;
 };
 
 #endif

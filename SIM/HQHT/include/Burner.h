@@ -1,20 +1,21 @@
 #ifndef BURNER_H
 #define BURNER_H
 
+#include "Utils.h"
+
 class Burner
 {
 	public:
-		enum State { ON, OFF }; 
-
 		Burner();
 		~Burner();
 
 		void Init();
 
-		void TurnOff();
-		void TurnOn();
+		void SetValue(float Value);
+
+		struct Counter m_Counter;
 	private:
-		State m_State;
+		float m_Value;
 };
 
 #endif

@@ -1,5 +1,6 @@
 #include "Burner.h"
 
+#include <iostream>
 
 Burner::Burner()
 {
@@ -14,15 +15,10 @@ Burner::~Burner()
 void Burner::Init()
 {
 	// Initial state is OFF
-	TurnOff();
+	SetValue(0.0f);
 }
 
-void Burner::TurnOff()
+void Burner::SetValue(float Value)
 {
-	m_State = State::OFF;	
-}
-
-void Burner::TurnOn()
-{
-	m_State = State::ON;
+	m_Value = Value <= 1.0f && Value >= 0.0f ? Value : Value > 1.0f ? 1.0f : 0.0f;
 }

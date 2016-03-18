@@ -10,3 +10,10 @@ void TemperatureSensor::Init()
 {
 
 }
+
+/* Calculates current temperature */
+void CalculateTemperature(float FillAmount)
+{
+		
+}
+
