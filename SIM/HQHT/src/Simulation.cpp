@@ -1,7 +1,6 @@
 #include "Simulation.h"
 
-#include <stdio.h>
-
+#include <iostream>
 
 void Simulation::Init()
 {
@@ -10,21 +9,29 @@ void Simulation::Init()
 
 void Simulation::InitSystems()
 {
+	// Initialize burner
 	m_burner.Init();
+	// Initialize temperature sensor
 	m_tempSensor.Init();
-	m_inputValve.Init();
+	// Initialize input valve
+	m_inputValve.Init("Input Valve");
+	// Initialize level senosr
 	m_levelSensor.Init();
-	m_outputValve4.Init();
-	m_outputValve3.Init();
-	m_outputValve2.Init();
-	m_outputValve1.Init();
+	// Initialize output valve 4
+	m_outputValve4.Init("Output Valve 4");
+	// Initialize output valve 3
+	m_outputValve3.Init("Output Valve 3");
+	// Initialize output valve 2
+	m_outputValve2.Init("Output Valve 2");
+	// Initialize output valve 1
+	m_outputValve1.Init("Output Valve 1");
 
-	printf("Everything initialized...\n");
+	std::cout << "Everything initialized..." << std::endl;
 }
 
 void Simulation::Run()
 {
-	printf("Running...\n");
+	std::cout << "Running..." << std::endl;
 }
 
 void Simulation::Update()
