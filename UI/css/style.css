@@ -1,0 +1,92 @@
+@font-face {
+    font-family: BebasNeue;
+    src: url('../fonts/BebasNeue.otf');
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	background-color: #282E3D;
+	font-family: BebasNeue;
+}
+
+.container {
+	max-width: 800px;
+}
+
+section.bg {
+	height: 500px;
+	border:1px solid #e5e5e5;
+	margin:0 auto;
+	margin-top: 100px;
+	padding:0px;
+
+	background-color: transparent;
+    background-image: linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent);
+  	background-size:50px 50px;
+}
+
+#tank {
+	width: 350px;
+	height: 250px;
+	margin-top: 10px; 
+	background-color: transparent;
+	box-shadow: 0px 0px 10px #000;
+	border:2px solid #006D89;
+	border-radius: 5px;
+	overflow: hidden;
+	position: relative;
+}
+
+#tank #content-level {
+	width: 100%;
+	background-color: #FFD727;
+	height: 34%;
+	position: absolute;
+	bottom: 0px;
+}
+
+#system-info {
+	background-color: rgba(0, 0, 0, 0.5);
+	height: 260px; /* height of tank + top margin */
+	color: #C2FCFE;
+	text-transform: uppercase;
+	font-size: 24px;
+	text-shadow: 0px 0px 1px #e5e5e5;
+	text-transform: uppercase;
+}
+
+#system-info p {
+	margin: 0px;
+}
+
+#system-info #errors {
+	background-color: rgba(32, 42, 60, 0.63);
+	padding: 10px;
+	border-radius: 1px;
+	box-shadow: 0px 0px 5px #111;
+}
+
+#second-row {
+	text-align: center;
+}
+
+#second-row button {
+	background-color: #6BA6D5;
+	border-radius: 8px; 
+	border: 0px;
+	padding: 10px 50px;
+	color: #C2FCFE;
+	font-weight: 400;
+	font-size: 42px;
+	box-shadow: 0px 0px 8px #111;
+	margin: 0 auto;
+	text-shadow: 0px 0px 2px #111;
+}
+
+#second-row button.dim {
+	background-color: #313B46; 
+	box-shadow: 0px 0px 8px #272626;
+	color: #7A7A7A;
+}
