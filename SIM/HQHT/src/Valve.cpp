@@ -20,6 +20,8 @@ void Valve::Init(std::string Name)
 
 	// Set initial state to being closed
 	Close();
+
+	Count = {0, 0, 0};
 }
 
 /* Opens valve */

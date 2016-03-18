@@ -12,7 +12,15 @@ struct Counter
 
 namespace Utils
 {
+	// Returns ticks of counter
 	inline void GetTicks(time_t* Time) 	{ time(Time); }
+
+	// Scaling function
+	inline float Scale(float Min, float Max, float a, float b, float x)
+	{
+		return (((b-a) * (x - Min)) / (Max - Min)) + a;
+	}
+
 }
 
 #endif

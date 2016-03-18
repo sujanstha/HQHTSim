@@ -29,7 +29,7 @@ class Simulation
 		void Run();
 
 		/* Updates all systems */
-		void Update();
+		void Update(double Time);
 
 		// If we use graphics...
 		void Render();
@@ -47,6 +47,8 @@ class Simulation
 		struct Counter m_Counter;
 
 		State m_State;
+
+		
 };
 
 #endif

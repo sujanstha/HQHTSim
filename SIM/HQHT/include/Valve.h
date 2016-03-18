@@ -25,7 +25,7 @@ class Valve
 		/* Returns current state */
 		inline State GetState() { return m_State; }
 
-		struct Counter m_Counter;
+		struct Counter Count;
 
 	private:
 		State m_State;
