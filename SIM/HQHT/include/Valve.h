@@ -27,9 +27,9 @@ class Valve
 
 		struct Counter Count;
 
+		std::string Name;
 	private:
 		State m_State;
-		std::string m_Name;
 
 };
 

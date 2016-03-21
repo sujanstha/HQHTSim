@@ -13,10 +13,10 @@ Valve::~Valve()
 }
 
 /* Initialization */
-void Valve::Init(std::string Name)
+void Valve::Init(std::string N)
 {
 	// Set its name
-	m_Name = Name;
+	Name = N;
 
 	// Set initial state to being closed
 	Close();
