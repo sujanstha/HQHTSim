@@ -7,7 +7,11 @@ var http = require('http');
 var BACKEND_STATUS  = 'STATUS: A=1.0, B=[1, 0, 0, 0], C=1.0, D=0.5, E=0.2';
 var UI_CONTROL      = 'CONTROL: A=1.0, B=[1, 0, 0, 0], C=1.0';
 
+var BACKEND_KEY     = '00';
+var UI_KEY          = '01';
+
 var ChangeBackendStatus = false;
+var ChangeUIControl     = false;
 
 var server = http.createServer();
 var wss = new WebSocketServer({server: server, path: '/foo'});
@@ -16,14 +20,19 @@ wss.on('connection', function(ws) {
     ws.on('message', function(data, flags) {
         if (flags.binary) { return; }
         console.log('>>> ' + data);
-        if (data == 'goodbye') { console.log('<<< galaxy'); ws.send('galaxy'); }
-        if (data == 'hello') { console.log('<<< world'); ws.send('world'); }
 
         if (ChangeBackendStatus == true)
         {
           BACKEND_STATUS = data;
           ChangeBackendStatus = false;
           ws.send(BACKEND_STATUS); 
+        }
+
+        if (ChangeUIControl == true)
+        {
+          UI_CONTROL = data;
+          ChangeUIControl = false;
+          ws.send(UI_CONTROL); 
         }
 
         if (data == 'GET_BACKEND_STATUS')
@@ -43,7 +52,7 @@ wss.on('connection', function(ws) {
 
         if (data == 'POST_UI_CONTROL')
         {
-          UI_CONTROL = data;
+          ChangeUIControl = true;
         }
 
     });
