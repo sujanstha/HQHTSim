@@ -1,4 +1,5 @@
 var socket;
+var STATUS;
 try{
 var host = "ws://localhost:8126/foo";
 socket = new WebSocket(host);
@@ -12,6 +13,10 @@ socket.onopen = function(){
 
 socket.onmessage = function(msg){
 		 message('Received: '+msg.data);
+		 var rawData = msg.data.replace(/\s/g, "").replace('STATUS:', '');
+		 var json = '{"'+rawData[0] + '":' + rawData.substring(2,5) + ',"' +  rawData[6] + '":' + rawData.substring(8, 17) + ',"' + rawData[18] + '":' + rawData.substring(20, 23) + ',"' + rawData[24] + '":' + rawData.substring(26, 29) + ',"' + rawData[30] + '":' + rawData.substring(32, 35) + '}';
+		 STATUS = JSON.parse(json);
+		 console.log(STATUS);
 }
 
 socket.onclose = function(){
@@ -25,6 +30,11 @@ socket.onclose = function(){
 function message(msg){
 	console.log(msg);
 }
+
+// Send data to WebSockets every second to get STATUS code
+setInterval(function(){ 
+	socket.send('GET_BACKEND_STATUS');
+}, 1000);
 
 
 // Toggle Cup Size on button click
