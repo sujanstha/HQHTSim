@@ -9,6 +9,17 @@
 
 #include <time.h>
 
+#include "easywsclient.hpp"
+#ifdef _WIN32
+#pragma comment( lib, "ws2_32" )
+#include <WinSock2.h>
+#endif
+#include <assert.h>
+#include <stdio.h>
+#include <string>
+
+using easywsclient::WebSocket;
+
 class Simulation
 {
 	enum State { RUNNING, EXIT };
@@ -33,6 +44,10 @@ class Simulation
 
 		// If we use graphics...
 		void Render();
+
+		void Poll();
+
+
 
 	private:
 		TemperatureSensor m_tempSensor;

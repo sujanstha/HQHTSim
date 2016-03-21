@@ -1,9 +1,14 @@
 #include "Simulation.h"
 
 #include <iostream>
+#include <stdio.h>
 #include <chrono>
 #include <time.h>
 
+/* Function prototypes */
+static WebSocket::pointer ws = NULL;
+void handle_message(const std::string& Message);
+void parse_message(const std::string& Message);
 
 void Simulation::Init()
 {
@@ -19,6 +24,24 @@ void Simulation::Init()
 
 void Simulation::InitSystems()
 {
+
+#ifdef _WIN32
+    INT rc;
+    WSADATA wsaData;
+
+    rc = WSAStartup(MAKEWORD(2, 2), &wsaData);
+    if (rc) {
+        printf("WSAStartup Failed.\n");
+        m_State = State::EXIT;
+    }
+#endif
+
+    ws = WebSocket::from_url("ws://localhost:8126/foo");
+    assert(ws);
+
+    // ws->send("goodbye")
+    // ws->send("hello");
+
 	// Initialize burner
 	m_burner.Init();
 
@@ -56,6 +79,9 @@ void Simulation::Run()
 	{
 		// Update systems
 		Update(Time);
+
+		// Poll for messages
+		Poll();
 	}
 
 }
@@ -201,6 +227,7 @@ void Simulation::Update(double Time)
 		if (m_outputValve1.GetState() == Valve::State::CLOSED && !poured)
 		{
 			std::cout << "Started pouring..." << std::endl;
+			ws->send("POURING");
 			// Open valve
 			m_outputValve1.Open();
 		
@@ -245,14 +272,32 @@ void Simulation::Update(double Time)
 
 }
 
+void Simulation::Poll()
+{
+	// while (ws->getReadyState() != WebSocket::CLOSED) 
+	// {
+	    ws->poll();
+	    ws->dispatch(handle_message);
+    // }
+}
+
 // If we use graphics...
 void Simulation::Render()
 {
 	
 }
 
+void handle_message(const std::string& message)
+{
+    printf(">>> %s\n", message.c_str());
+    // if (message == "world") { ws->close(); }
+    // if (message == "galaxy") printf("closing the valve...\n");
+}
 
-
+void parse_message(const std::string& Message)
+{
+		
+}
 
 
 
