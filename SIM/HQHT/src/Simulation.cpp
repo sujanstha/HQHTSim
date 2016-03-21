@@ -4,16 +4,34 @@
 #include <stdio.h>
 #include <chrono>
 #include <time.h>
+#include <vector>
+#include <sstream>
+
+typedef struct
+{
+	float A;
+	float B1;
+	float B2;
+	float B3;
+	float B4;
+	float C;
+	float D;
+	float E;
+} values;
+
+values InValues;
 
 /* Function prototypes */
 static WebSocket::pointer ws = NULL;
 void handle_message(const std::string& Message);
-void parse_message(const std::string& Message);
+void parse_message(std::string& message);
 
 void Simulation::Init()
 {
 	// Initialize counter to 0
 	m_Counter = {0, 0, 0};
+
+	InValues = {0, 0, 0, 0, 0, 0, 0, 0};
 
 	// Set state to RUNNING
 	m_State = State::RUNNING;	
@@ -38,9 +56,6 @@ void Simulation::InitSystems()
 
     ws = WebSocket::from_url("ws://localhost:8126/foo");
     assert(ws);
-
-    // ws->send("goodbye")
-    // ws->send("hello");
 
 	// Initialize burner
 	m_burner.Init();
@@ -227,9 +242,11 @@ void Simulation::Update(double Time)
 		if (m_outputValve1.GetState() == Valve::State::CLOSED && !poured)
 		{
 			std::cout << "Started pouring..." << std::endl;
-			ws->send("POURING");
+			ws->send("POST_BACKEND_STATUS");
 			// Open valve
 			m_outputValve1.Open();
+			InValues.B1 = 1.0f;
+			ws->send(GetStatusString().c_str());
 		
 			// Set start ticks	
 			Utils::GetTicks(&m_outputValve1.Count.Start);	
@@ -272,13 +289,17 @@ void Simulation::Update(double Time)
 
 }
 
+std::string Simulation::GetStatusString()
+{
+	return "STATUS: A=" + std::to_string(InValues.A) + ", B=[" + std::to_string(InValues.B1) + 
+						", " + std::to_string(InValues.B2 )+ ", " + std::to_string(InValues.B3) + ", " + std::to_string(InValues.B4) + "], C=" + std::to_string(InValues.C) + ", D=" + 
+								std::to_string(InValues.D) + ", E=" + std::to_string(InValues.E);
+}
+
 void Simulation::Poll()
 {
-	// while (ws->getReadyState() != WebSocket::CLOSED) 
-	// {
-	    ws->poll();
-	    ws->dispatch(handle_message);
-    // }
+    ws->poll();
+    ws->dispatch(handle_message);
 }
 
 // If we use graphics...
@@ -290,13 +311,105 @@ void Simulation::Render()
 void handle_message(const std::string& message)
 {
     printf(">>> %s\n", message.c_str());
+    std::string M(message.c_str());
+
+    parse_message(M);
+
     // if (message == "world") { ws->close(); }
     // if (message == "galaxy") printf("closing the valve...\n");
 }
 
-void parse_message(const std::string& Message)
+void parse_message(std::string& message)
 {
-		
+	std::stringstream ss(message);
+	std::string line;
+	std::vector<std::string> wordVector;
+
+	while(std::getline(ss, line))
+	{
+		std::size_t prev = 0, pos;
+		while((pos = line.find_first_of(" []:=,", prev)) != std::string::npos)
+		{
+			if (pos > prev)
+				wordVector.push_back(line.substr(prev, pos-prev));
+			prev = pos + 1;
+		}
+		if (prev < line.length())
+			wordVector.push_back(line.substr(prev, std::string::npos));
+	}
+
+	auto S = wordVector.size();
+	printf("size: %d\n", S);
+	for (auto i = 0; i < S; i++)
+	{
+		if (i + 1 >= S) continue;
+
+		auto m = wordVector.at(i).c_str()[0];
+		auto m2 = wordVector.at(i + 1).c_str();
+
+		switch(m)
+		{
+			case 'A':
+			{
+				auto V = ::atof(m2);
+				InValues.A = V;
+				printf("Input valve set to %.2f\n", V);	
+				break;
+			} 
+			case 'B':
+			{
+				auto v1 = i + 1, v2 = i + 2, v3 = i + 3, v4 = i + 4;
+				if (v1 < S) 
+				{
+					auto V = ::atof(wordVector.at(v1).c_str());
+					InValues.B1 = V;
+					printf("Output Valve 1 set to %.2f\n", V);
+				}
+				if (v2 < S) 
+				{
+					auto V = ::atof(wordVector.at(v2).c_str());
+					InValues.B2 = V;
+					printf("Output Valve 2 set to %.2f\n", V);
+				}
+				if (v2 < S) 
+				{
+					auto V = ::atof(wordVector.at(v3).c_str());
+					InValues.B3 = V;
+					printf("Output Valve 3 set to %.2f\n", V);
+				}
+				if (v2 < S) 
+				{
+					auto V = ::atof(wordVector.at(v4).c_str());
+					InValues.B4 = V;
+					printf("Output Valve 4 set to %.2f\n", V);
+				}
+				break;
+			} 
+			case 'C':
+			{
+				auto V = ::atof(m2);
+				InValues.C = V;
+				printf("Burner set to %.2f\n", V);
+
+				break;
+			} 
+			case 'D':
+			{
+				auto V = ::atof(m2);
+				InValues.D = V;
+				printf("Level sensor at %.2f\n", V);
+				break;
+			} 
+			case 'E':
+			{
+				auto V = ::atof(m2);
+				InValues.E = V;
+				printf("Temp sensor at %.2f\n", V);
+				break;
+			} 
+			default: break;
+		}
+	}
 }
 
 

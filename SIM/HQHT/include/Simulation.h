@@ -47,7 +47,7 @@ class Simulation
 
 		void Poll();
 
-
+		std::string GetStatusString();
 
 	private:
 		TemperatureSensor m_tempSensor;
@@ -62,8 +62,6 @@ class Simulation
 		struct Counter m_Counter;
 
 		State m_State;
-
-		
 };
 
 #endif
