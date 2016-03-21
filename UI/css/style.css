@@ -12,7 +12,7 @@ body {
 }
 
 .container {
-	max-width: 800px;
+	max-width: 900px;
 }
 
 section.bg {
@@ -53,12 +53,23 @@ section.bg {
 	color: #C2FCFE;
 	text-transform: uppercase;
 	font-size: 24px;
-	text-shadow: 0px 0px 1px #e5e5e5;
+	text-shadow: 0px 0px 1px #898888;
 	text-transform: uppercase;
+	overflow: hidden;
 }
 
 #system-info p {
 	margin: 0px;
+}
+
+#system-info button {
+	background-color: #323D48;
+	border-radius: 0px 0px 0px 8px; 
+	border: 0px;
+	padding: 0px 10px;
+	color: #C2FCFE;
+	font-weight: 400;
+	font-size: 28px;
 }
 
 #system-info #errors {
@@ -68,8 +79,23 @@ section.bg {
 	box-shadow: 0px 0px 5px #111;
 }
 
+#system-info li {
+	width: 250px;
+	margin: 15px 0px; 
+}
+
+#system-info li > span {
+	padding: 0px 20px;
+	font-size: 22px;
+	width: 135px;
+	display: inline-block;
+}
+
 #second-row {
 	text-align: center;
+	padding-top: 20px;
+	display: table;
+	width: 100%;
 }
 
 #second-row button {
@@ -89,4 +115,49 @@ section.bg {
 	background-color: #313B46; 
 	box-shadow: 0px 0px 8px #272626;
 	color: #7A7A7A;
+}
+
+.cups {
+	background-color: #313B46;
+	margin-top: 20px;
+	padding: 10px;
+	display: table;
+	border-radius: 5px;
+	display: none;
+	height: 65px;
+}
+
+.cups:after {
+	content: ".";
+	display: table;
+	clear: both;
+}
+
+.cups img {
+	max-width: 40px;
+	float: left;
+	margin: 1px; 
+	cursor: pointer;
+}
+
+/* CSS Override */
+.toggle-on.btn {
+    padding-right: 45px;
+}
+
+.toggle-off.btn {
+    padding-left: 45px;
+}
+
+.toggle-handle {
+	width: 80px;
+	background-color: #ADD4FF;
+	box-shadow: 0px 0px 1px #1C9696;
+	height: 93%;
+	margin-top: 1px;
+}
+
+.toggle-on.btn, .toggle-off.btn {
+    font-size: 18px;
+    padding-top: 5px;
 }

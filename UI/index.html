@@ -9,6 +9,8 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Toggle Button -->
+    <link href="css/bootstrap-toggle.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="css/style.css" rel="stylesheet">
 
@@ -21,6 +23,7 @@
   </head>
   <body>
     <section class="bg container">
+
       <div class="col-md-6">
         <div id="tank">
           <div id="content-level"></div>
@@ -28,6 +31,18 @@
       </div>
 
       <div class="col-md-6" id="system-info">
+        <!-- Single button -->
+        <div class="btn-group" style="float: right;margin-right: -15px;">
+          <button type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="glyphicon glyphicon-cog"></span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-right" style="background-color: #2A2D38;">
+            <li><span>Input Valve</span><input checked data-toggle="toggle" data-width="100" type="checkbox"></li>
+            <li><span>Burner Malf.</span><input data-toggle="toggle" data-width="100" type="checkbox"></li>
+            <li><span>Leak Malf.</span><input data-toggle="toggle" data-width="100" type="checkbox"></li>
+          </ul>
+        </div>
+
         <p id=status>Status: Normal</p>
         <p id="coffee-level">Coffee Level: 34%</p>
         <p id="temperature">Temperature: 80</p>
@@ -38,22 +53,46 @@
         </div>
       </div>
 
-      /* Second Row */
+      <!-- Second Row -->
       <div id="second-row">
         <div class="col-md-3">
           <button id="button1" class="dim">B1</button>
+          <div class="cups">
+            <img src="img/cup_s.png" id="b1_s" class="cup">
+            <img src="img/cup_m.png" id="b1_m" class="cup">
+            <img src="img/cup_l.png" id="b1_l" class="cup">
+            <img src="img/cup_xl.png" id="b1_xl" class="cup">
+          </div>
         </div>
 
         <div class="col-md-3">
           <button id="button2">B2</button>
+          <div class="cups">
+            <img src="img/cup_s.png" id="b2_s" class="cup">
+            <img src="img/cup_m.png" id="b2_m" class="cup">
+            <img src="img/cup_l.png" id="b2_l" class="cup">
+            <img src="img/cup_xl.png" id="b2_xl" class="cup">
+          </div>
         </div>
 
         <div class="col-md-3">
           <button id="button3">B3</button>
+          <div class="cups">
+            <img src="img/cup_s.png" id="b3_s" class="cup">
+            <img src="img/cup_m.png" id="b3_m" class="cup">
+            <img src="img/cup_l.png" id="b3_l" class="cup">
+            <img src="img/cup_xl.png" id="b3_xl" class="cup">
+          </div>
         </div>
 
         <div class="col-md-3">
           <button id="button4">B4</button>
+          <div class="cups">
+            <img src="img/cup_s.png" id="b4_s" class="cup">
+            <img src="img/cup_m.png" id="b4_m" class="cup">
+            <img src="img/cup_l.png" id="b4_l" class="cup">
+            <img src="img/cup_xl.png" id="b4_xl" class="cup">
+          </div>
         </div>
       </div>
     </section>
@@ -61,6 +100,9 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <!-- Toggle Button -->
+    <script src="js/bootstrap-toggle.min.js"></script>
+    <script src="js/hqhtsim.js"></script>
   </body>
 </html>
