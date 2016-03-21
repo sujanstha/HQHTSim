@@ -7,19 +7,9 @@
 #include <vector>
 #include <sstream>
 
-typedef struct
-{
-	float A;
-	float B1;
-	float B2;
-	float B3;
-	float B4;
-	float C;
-	float D;
-	float E;
-} values;
 
 values InValues;
+values OutValues;
 
 /* Function prototypes */
 static WebSocket::pointer ws = NULL;
@@ -31,7 +21,8 @@ void Simulation::Init()
 	// Initialize counter to 0
 	m_Counter = {0, 0, 0};
 
-	InValues = {0, 0, 0, 0, 0, 0, 0, 0};
+	InValues 	= {0, 0, 0, 0, 0, 0, 0, 0};
+	OutValues 	= {0, 0, 0, 0, 0, 0, 0, 0};
 
 	// Set state to RUNNING
 	m_State = State::RUNNING;	
@@ -70,16 +61,21 @@ void Simulation::InitSystems()
 	m_levelSensor.Init();
 
 	// Initialize output valve 4
-	m_outputValve4.Init("Output Valve 4");
+	m_outputValve4.Init("B4");
 
 	// Initialize output valve 3
-	m_outputValve3.Init("Output Valve 3");
+	m_outputValve3.Init("B3");
 
 	// Initialize output valve 2
-	m_outputValve2.Init("Output Valve 2");
+	m_outputValve2.Init("B2");
 
 	// Initialize output valve 1
-	m_outputValve1.Init("Output Valve 1");
+	m_outputValve1.Init("B1");
+
+	m_OutputValves.push_back(&m_outputValve1);
+	m_OutputValves.push_back(&m_outputValve2);
+	m_OutputValves.push_back(&m_outputValve3);
+	m_OutputValves.push_back(&m_outputValve4);
 
 	std::cout << "Everything initialized..." << std::endl;
 }
@@ -238,66 +234,95 @@ void Simulation::Update(double Time)
 	// Check to see whether or not we can actually pour coffee
 	if (m_tempSensor.GetTemperature() >= OPTIMAL_TEMP - 2.0f && m_tempSensor.GetTemperature() <= OPTIMAL_TEMP + 2.0f  && m_levelSensor.GetLevel() >= 0.06f)
 	{
-		// Simulate pouring small cup of coffee from valve 1
-		if (m_outputValve1.GetState() == Valve::State::CLOSED && !poured)
+		for (auto Valve : m_OutputValves)
 		{
-			std::cout << "Started pouring..." << std::endl;
-			ws->send("POST_BACKEND_STATUS");
-			// Open valve
-			m_outputValve1.Open();
-			InValues.B1 = 1.0f;
-			ws->send(GetStatusString().c_str());
-		
-			// Set start ticks	
-			Utils::GetTicks(&m_outputValve1.Count.Start);	
+			// Check with InValves to see whether or not things need to be turned on
+			auto Name = Valve->Name;
+			float* IV = NULL;
+			float* OV = NULL;
+			if (Name == "B1") 		{ IV = &InValues.B1; OV = &OutValues.B1; }
+			else if (Name == "B2")  { IV = &InValues.B2; OV = &OutValues.B2; }
+			else if (Name == "B3")  { IV = &InValues.B3; OV = &OutValues.B3; }
+			else if (Name == "B4") 	{ IV = &InValues.B4; OV = &OutValues.B4; }
+			else continue;
 
-			poured = true;
-		}
-
-		if (m_outputValve1.Count.TotalElapsed >= 5)
-		{
-			std::cout << "Coffee finished pouring..." << std::endl;
-			// Close the valve
-			m_outputValve1.Close();
-
-			// Reset elapsed time
-			m_outputValve1.Count.TotalElapsed = 0;	
-		}
-
-		if (m_outputValve1.GetState() == Valve::State::OPEN)
-		{
-			// Get End ticks
-			Utils::GetTicks(&m_outputValve1.Count.End);
-
-			unsigned int Difference = m_outputValve1.Count.End - m_outputValve1.Count.Start; 
-			if (Difference > 0)
+			// Turn on 
+			if (*IV != 0.0f && Valve->GetState() == Valve::State::CLOSED)
 			{
-				m_outputValve1.Count.TotalElapsed += Difference;
+				std::cout << Name + " turned on..." << std::endl;
+				ws->send("POST_BACKEND_STATUS");
 
-				float Delta;
+				// Open valve
+				Valve->Open();
+				*OV = *IV;
+				ws->send(GetStatusString(OutValues).c_str());
 
-				// Decrement level by amount
-				if (m_outputValve1.Count.TotalElapsed >= 5) Delta = 0.0f;
-				else Delta = Utils::Scale(0.0f, 10.0f, 0.0f, 1.0f, 0.05f);
-
-				m_levelSensor.AddAmount(-Delta);
-
-				Utils::GetTicks(&m_outputValve1.Count.Start);
+				std::cout << GetStatusString(OutValues) << std::endl;
+			
+				// Set start ticks	
+				Utils::GetTicks(&Valve->Count.Start);
 			} 
+
+			if (Valve->Count.TotalElapsed >= 5)
+			{
+				std::cout << Name + " turning off..." << std::endl;
+
+				// Reset in and out values
+				*IV = 0.0f;
+				*OV = 0.0f;
+
+				// Close the valve
+				Valve->Close();
+
+				ws->send("POST_BACKEND_STATUS");
+				ws->send(GetStatusString(OutValues).c_str());
+
+				// Reset elapsed time
+				Valve->Count.TotalElapsed = 0;
+			}
+
+			if (Valve->GetState() == Valve::State::OPEN)
+			{
+				// Get end ticks
+				Utils::GetTicks(&Valve->Count.End);
+
+				unsigned int Difference = Valve->Count.End - Valve->Count.Start;
+
+				if (Difference > 0)
+				{
+					Valve->Count.TotalElapsed += Difference;
+
+					float Delta;
+					if (Valve->Count.TotalElapsed >= 5) Delta = 0.0f;
+					else Delta = Utils::Scale(0.0f, 10.0f, 0.0f, 1.0f, 0.05f);
+
+					// Decrease level
+					m_levelSensor.AddAmount(-Delta);
+
+					// Reset start
+					Utils::GetTicks(&Valve->Count.Start);
+				}
+			}
 		}
 	}
 
 }
 
-std::string Simulation::GetStatusString()
+std::string Simulation::GetStatusString(values& V)
 {
-	return "STATUS: A=" + std::to_string(InValues.A) + ", B=[" + std::to_string(InValues.B1) + 
-						", " + std::to_string(InValues.B2 )+ ", " + std::to_string(InValues.B3) + ", " + std::to_string(InValues.B4) + "], C=" + std::to_string(InValues.C) + ", D=" + 
-								std::to_string(InValues.D) + ", E=" + std::to_string(InValues.E);
+	return "STATUS: A=" + std::to_string(V.A) + ", B=[" + std::to_string(V.B1) + 
+						", " + std::to_string(V.B2 )+ ", " + std::to_string(V.B3) + ", " + std::to_string(V.B4) + "], C=" + std::to_string(V.C) + ", D=" + 
+								std::to_string(V.D) + ", E=" + std::to_string(V.E);
 }
 
 void Simulation::Poll()
 {
+	Utils::GetTicks(&m_Counter.End);
+	if (m_Counter.End - m_Counter.Start > 0)
+	{
+		ws->send("GET_UI_CONTROL");
+		Utils::GetTicks(&m_Counter.Start);
+	}
     ws->poll();
     ws->dispatch(handle_message);
 }
@@ -310,13 +335,8 @@ void Simulation::Render()
 
 void handle_message(const std::string& message)
 {
-    printf(">>> %s\n", message.c_str());
     std::string M(message.c_str());
-
     parse_message(M);
-
-    // if (message == "world") { ws->close(); }
-    // if (message == "galaxy") printf("closing the valve...\n");
 }
 
 void parse_message(std::string& message)
@@ -324,6 +344,8 @@ void parse_message(std::string& message)
 	std::stringstream ss(message);
 	std::string line;
 	std::vector<std::string> wordVector;
+
+	std::cout << message << std::endl;
 
 	while(std::getline(ss, line))
 	{
@@ -339,7 +361,6 @@ void parse_message(std::string& message)
 	}
 
 	auto S = wordVector.size();
-	printf("size: %d\n", S);
 	for (auto i = 0; i < S; i++)
 	{
 		if (i + 1 >= S) continue;
@@ -353,7 +374,6 @@ void parse_message(std::string& message)
 			{
 				auto V = ::atof(m2);
 				InValues.A = V;
-				printf("Input valve set to %.2f\n", V);	
 				break;
 			} 
 			case 'B':
@@ -363,25 +383,21 @@ void parse_message(std::string& message)
 				{
 					auto V = ::atof(wordVector.at(v1).c_str());
 					InValues.B1 = V;
-					printf("Output Valve 1 set to %.2f\n", V);
 				}
 				if (v2 < S) 
 				{
 					auto V = ::atof(wordVector.at(v2).c_str());
 					InValues.B2 = V;
-					printf("Output Valve 2 set to %.2f\n", V);
 				}
 				if (v2 < S) 
 				{
 					auto V = ::atof(wordVector.at(v3).c_str());
 					InValues.B3 = V;
-					printf("Output Valve 3 set to %.2f\n", V);
 				}
 				if (v2 < S) 
 				{
 					auto V = ::atof(wordVector.at(v4).c_str());
 					InValues.B4 = V;
-					printf("Output Valve 4 set to %.2f\n", V);
 				}
 				break;
 			} 
@@ -389,7 +405,6 @@ void parse_message(std::string& message)
 			{
 				auto V = ::atof(m2);
 				InValues.C = V;
-				printf("Burner set to %.2f\n", V);
 
 				break;
 			} 
@@ -397,14 +412,12 @@ void parse_message(std::string& message)
 			{
 				auto V = ::atof(m2);
 				InValues.D = V;
-				printf("Level sensor at %.2f\n", V);
 				break;
 			} 
 			case 'E':
 			{
 				auto V = ::atof(m2);
 				InValues.E = V;
-				printf("Temp sensor at %.2f\n", V);
 				break;
 			} 
 			default: break;

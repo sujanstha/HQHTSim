@@ -18,6 +18,18 @@
 #include <stdio.h>
 #include <string>
 
+typedef struct
+{
+	float A;
+	float B1;
+	float B2;
+	float B3;
+	float B4;
+	float C;
+	float D;
+	float E;
+} values;
+
 using easywsclient::WebSocket;
 
 class Simulation
@@ -47,7 +59,7 @@ class Simulation
 
 		void Poll();
 
-		std::string GetStatusString();
+		std::string GetStatusString(values& V);
 
 	private:
 		TemperatureSensor m_tempSensor;
@@ -58,6 +70,8 @@ class Simulation
 		Valve m_outputValve2;		
 		Valve m_outputValve3;		
 		Valve m_outputValve4;
+
+		std::vector<Valve*> m_OutputValves;
 
 		struct Counter m_Counter;
 
