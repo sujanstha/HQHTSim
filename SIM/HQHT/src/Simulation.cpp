@@ -322,6 +322,9 @@ void Simulation::Poll()
 	{
 		ws->send("GET_UI_CONTROL");
 		Utils::GetTicks(&m_Counter.Start);
+
+		ws->send("POST_BACKEND_STATUS");
+		ws->send(GetStatusString(OutValues).c_str());
 	}
     ws->poll();
     ws->dispatch(handle_message);
