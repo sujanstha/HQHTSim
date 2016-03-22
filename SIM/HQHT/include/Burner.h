@@ -15,6 +15,7 @@ class Burner
 		void Init();
 
 		void SetValue(float Value);
+		inline float GetValue() { return m_Value; }
 
 		/* Gets a calculated temperature of burner based off of current value */
 		float GetCalculatedTemp();

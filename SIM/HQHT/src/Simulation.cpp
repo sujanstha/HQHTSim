@@ -105,6 +105,7 @@ void Simulation::Update(double Time)
 
 	static float CurrentTemp = m_tempSensor.GetTemperature();
 
+
 	// Check level sensor 
 	if (m_levelSensor.GetLevel() < 0.98f && m_inputValve.GetState() == Valve::State::CLOSED)
 	{
@@ -113,7 +114,6 @@ void Simulation::Update(double Time)
 	
 		// Start timer and fill tank
 		Utils::GetTicks(&m_inputValve.Count.Start);
-
 	}
 
 	////////////////////////////////////
@@ -305,6 +305,15 @@ void Simulation::Update(double Time)
 			}
 		}
 	}
+
+	//////////////////////////////////
+	// OUTPUT VALUES /////////////////
+	//////////////////////////////////
+
+	OutValues.A = m_inputValve.GetValue();
+	OutValues.C = m_burner.GetValue();
+	OutValues.E = m_levelSensor.GetLevel();
+	OutValues.D = m_tempSensor.GetTemperature();
 
 }
 
