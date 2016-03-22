@@ -8,7 +8,7 @@ TemperatureSensor::~TemperatureSensor() {}
 /* Initialization */
 void TemperatureSensor::Init()
 {
-	m_Temperature = 82.5f;	
+	m_Temperature = 83.5f;	
 
 	// Start its ticks here
 	Utils::GetTicks(&Count.Start);

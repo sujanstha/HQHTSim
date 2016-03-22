@@ -1,3 +1,10 @@
+/********************************************************
+* @file: 	Simulation.h
+* @brief:	Header file for Simulation class 
+* @author: 	John Jackson
+* @date: 	03/22/2016
+********************************************************/
+
 #ifndef SIMULATION_H
 #define SIMULATION_H
 
@@ -18,6 +25,11 @@
 #include <stdio.h>
 #include <string>
 
+/********************************************************
+* @struct: 	values
+* @brief:	Struct needed to hold output and input values from server 
+* @author: 	John Jackson
+********************************************************/
 typedef struct
 {
 	float A;
@@ -32,6 +44,11 @@ typedef struct
 
 using easywsclient::WebSocket;
 
+/********************************************************
+* @class: 	Simulation
+* @brief:	Class declaration for main simulation 
+* @author: 	John Jackson
+********************************************************/
 class Simulation
 {
 	enum State { RUNNING, EXIT };
