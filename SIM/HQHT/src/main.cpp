@@ -1,3 +1,10 @@
+/********************************************************
+* @file: 	main.cpp
+* @brief:	Main entry point for simulation executable 
+* @author: 	John Jackson
+* @date: 	03/22/2016
+********************************************************/
+
 /**
 * MAIN LOOP
 */

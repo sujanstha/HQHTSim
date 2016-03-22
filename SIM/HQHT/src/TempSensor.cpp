@@ -1,5 +1,11 @@
-#include "TempSensor.h"
+/********************************************************
+* @file: 	TempSensor.cpp
+* @brief:	Source file for TempSensor class
+* @author: 	John Jackson
+* @date: 	03/22/2016
+********************************************************/
 
+#include "TempSensor.h"
 
 TemperatureSensor::TemperatureSensor() {}
 

@@ -1,3 +1,10 @@
+/********************************************************
+* @file: 	Simulation.cpp
+* @brief:	Source file for Simulation class
+* @author: 	John Jackson
+* @date: 	03/22/2016
+********************************************************/
+
 #include "Simulation.h"
 
 #include <iostream>

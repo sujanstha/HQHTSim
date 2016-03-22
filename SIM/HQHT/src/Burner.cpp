@@ -1,5 +1,11 @@
-#include "Burner.h"
+/********************************************************
+* @file: 	Burner.cpp
+* @brief:	Source file for Burner class 
+* @author: 	John Jackson
+* @date: 	03/22/2016
+********************************************************/
 
+#include "Burner.h"
 #include <iostream>
 
 Burner::Burner()
