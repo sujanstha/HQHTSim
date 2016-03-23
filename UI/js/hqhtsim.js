@@ -15,24 +15,12 @@ socket.onopen = function(){
 socket.onmessage = function(msg){
 		 message('Received: '+msg.data);
 		 var rawData = msg.data.replace(/\s/g, "").replace('STATUS:', '');
-		 var index = new Array();
-		 var bool = true;
-		 for (var i =  0; i < rawData.length && index.length < 12; i++) {
-		 	if (bool) {
-		 		index.push(rawData.substring(i, rawData.length).indexOf("=") + index[i]);
-		 		bool = false;
-		 	}		
-		 	else
-		 	{
-		 		index.push(rawData.substring(i, rawData.length).indexOf(",") + index[i]);l
-		 		bool = true;
-		 	}
-		 }
-		 console.log(index);
-		 json = '{"'+rawData[index[0]-1] + '":' + rawData.substring(index[1]+1,index[2]) + ',"' +  rawData[index[3]-1] + '":' + rawData.substring(index[4]+1, index[5]) + ',"' + rawData[index[6]-1] + '":' + rawData.substring(index[7]+1, index[8]) + ',"' + rawData[index[9]-1] + '":' + rawData.substring(index[10]+1, index[11]) + ',"' + rawData[index[12]-1] + '":' + rawData.substring(index[13]+1, index[14]) + '}';
+		 var rawList = rawData.split(/[\[\]\s,=]+/);
+		 var json = '';
+		 json = '{"'+rawList[0] + '":' + rawList[1] + ',"' +  rawList[2] + '":[' + rawList[3] + "," + rawList[4] + "," + rawList[5] + "," + rawList[6] + '],"' + rawList[7] + '":' + rawList[8] + ',"' + rawList[9] + '":' + rawList[10] + ',"' + rawList[11] + '":' + rawList[12] + '}';
 		 //json = '{"'+rawData[0] + '":' + rawData.substring(2,5) + ',"' +  rawData[6] + '":' + rawData.substring(8, 17) + ',"' + rawData[18] + '":' + rawData.substring(20, 23) + ',"' + rawData[24] + '":' + rawData.substring(26, 29) + ',"' + rawData[30] + '":' + rawData.substring(32, 35) + '}';
-		 //STATUS = JSON.parse(json);
-		 console.log(json);
+		 STATUS = JSON.parse(json);
+		 console.log(STATUS);
 }
 
 socket.onclose = function(){
@@ -50,10 +38,10 @@ function message(msg){
 // Send data to WebSockets every second to get STATUS code
 setInterval(function(){ 
 	socket.send('GET_BACKEND_STATUS');
-	$("#content-level").css("height", STATUS.D*100+"%");
+	$("#content-level").css("height", STATUS.D+"%");
 	$("#status").html("Normal");
 	$("#coffee-level").html(STATUS.D);
-	$("#temperature").html(STATUS.C);
+	$("#temperature").html(STATUS.E);
 	$("#burner").html(STATUS.C);
 	$("#open-valves").html(STATUS.B);
 	console.log(STATUS);
@@ -64,19 +52,34 @@ setInterval(function(){
 $("#button1").click(function(){
 	$(this).addClass('dim');
     $(this).siblings(".cups").toggle();
-    if (true) {}
+    if($(this).siblings(".cups").css('display') == "none") 
+    {
+    	$(this).removeClass('dim');
+    }
 });
 $("#button2").click(function(){
 	$(this).addClass('dim');
     $(this).siblings(".cups").toggle();
+    if($(this).siblings(".cups").css('display') == "none") 
+    {
+    	$(this).removeClass('dim');
+    }
 });
 $("#button3").click(function(){
 	$(this).addClass('dim');
     $(this).siblings(".cups").toggle();
+    if($(this).siblings(".cups").css('display') == "none") 
+    {
+    	$(this).removeClass('dim');
+    }
 });
 $("#button4").click(function(){
 	$(this).addClass('dim');
     $(this).siblings(".cups").toggle();
+    if($(this).siblings(".cups").css('display') == "none") 
+    {
+    	$(this).removeClass('dim');
+    }
 });
 
 $(".cup").click(function(){
