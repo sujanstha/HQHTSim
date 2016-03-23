@@ -32,14 +32,14 @@
 ********************************************************/
 typedef struct
 {
-	float A;
-	float B1;
-	float B2;
-	float B3;
-	float B4;
-	float C;
-	float D;
-	float E;
+	float A;     	///> Input Valve
+	float B1;	 	///> Output Valve 1
+	float B2;	 	///> Output Valve 2
+	float B3;		///> Output Valve 3 		
+	float B4;		///> Output Valve 4
+	float C;		///> Burner Value
+	float D;		///> Fill Level
+	float E;		///> Temperature
 } values;
 
 using easywsclient::WebSocket;
