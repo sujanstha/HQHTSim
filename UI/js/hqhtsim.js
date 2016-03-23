@@ -44,6 +44,7 @@ setInterval(function(){
 	$("#temperature").html(STATUS.E);
 	$("#burner").html(STATUS.C);
 	$("#open-valves").html(STATUS.B);
+	CONTROL.B == STATUS.B;
 	console.log(STATUS);
 }, 1000);
 
