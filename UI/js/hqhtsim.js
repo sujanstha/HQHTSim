@@ -104,6 +104,7 @@ $(".cup").click(function(){
 		CONTROL.B[3] = 1;
 	}
 	socket.send('POST_UI_CONTROL');
-	socket.send('CONTROL: A=1.0, B=['+ CONTROL.B[0] +", " + CONTROL.B[0] + ", " + CONTROL.B[0] +", "+ CONTROL.B[0] + '], C=1.0');
+	socket.send('CONTROL: A=1.0, B=['+ CONTROL.B[0] +", " + CONTROL.B[1] + ", " + CONTROL.B[2] +", "+ CONTROL.B[3] + '], C=1.0');
 	message('Request Sent: '+$(this).attr('id'));
+	console.log(CONTROL.B);
 });
