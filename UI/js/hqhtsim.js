@@ -38,7 +38,7 @@ function message(msg){
 // Send data to WebSockets every second to get STATUS code
 setInterval(function(){ 
 	socket.send('GET_BACKEND_STATUS');
-	$("#content-level").css("height", STATUS.D+"%");
+	$("#content-level").css("height", STATUS.D*100+"%");
 	$("#status").html("Normal");
 	$("#coffee-level").html(STATUS.D);
 	$("#temperature").html(STATUS.E);
