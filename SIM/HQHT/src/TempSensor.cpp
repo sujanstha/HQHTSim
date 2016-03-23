@@ -1,5 +1,11 @@
-#include "TempSensor.h"
+/********************************************************
+* @file: 	TempSensor.cpp
+* @brief:	Source file for TempSensor class
+* @author: 	John Jackson
+* @date: 	03/22/2016
+********************************************************/
 
+#include "TempSensor.h"
 
 TemperatureSensor::TemperatureSensor() {}
 
@@ -8,7 +14,7 @@ TemperatureSensor::~TemperatureSensor() {}
 /* Initialization */
 void TemperatureSensor::Init()
 {
-	m_Temperature = 83.5f;	
+	m_Temperature = 0.835f;	
 
 	// Start its ticks here
 	Utils::GetTicks(&Count.Start);

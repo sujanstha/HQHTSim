@@ -1,3 +1,10 @@
+/********************************************************
+* @file: 	Valve.cpp
+* @brief:	Source file for Valve class
+* @author: 	John Jackson
+* @date: 	03/22/2016
+********************************************************/
+
 #include "Valve.h"		
 
 #include <iostream>

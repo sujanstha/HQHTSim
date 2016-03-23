@@ -32,14 +32,14 @@
 ********************************************************/
 typedef struct
 {
-	float A;
-	float B1;
-	float B2;
-	float B3;
-	float B4;
-	float C;
-	float D;
-	float E;
+	float A;     	///> Input Valve
+	float B1;	 	///> Output Valve 1
+	float B2;	 	///> Output Valve 2
+	float B3;		///> Output Valve 3 		
+	float B4;		///> Output Valve 4
+	float C;		///> Burner Value
+	float D;		///> Fill Level
+	float E;		///> Temperature
 } values;
 
 using easywsclient::WebSocket;
@@ -51,34 +51,69 @@ using easywsclient::WebSocket;
 ********************************************************/
 class Simulation
 {
+
+	// Enum for state of simulation 	
 	enum State { RUNNING, EXIT };
+
  public:
-		/* Constructor */
+	
+		/********************************************************
+		* @brief:	Default Constructor for simulation 
+		* @author: 	John Jackson
+		********************************************************/
 		Simulation(){}
 
-		/* Destructor */
+		/********************************************************
+		* @brief:	Default Destructor for simulation 
+		* @author: 	John Jackson
+		********************************************************/
 		~Simulation(){}
 
-		/* Initialization */
+		/********************************************************
+		* @brief:	Init function for simulation - Use this to init subsytems 
+		* @author: 	John Jackson
+		********************************************************/
 		void Init();
 
-		/* Responsible for initializing individual systems of simulation */
+		/********************************************************
+		* @brief:	Responsible for initializing individual systems of simulation 
+		* @author: 	John Jackson
+		********************************************************/
 		void InitSystems();
 
-		/* Main run function */
+		/********************************************************
+		* @brief:	Main run function for simulation
+		* @author: 	John Jackson
+		********************************************************/
 		void Run();
 
-		/* Updates all systems */
+		/********************************************************
+		* @brief:	Updates all systems
+		* @author: 	John Jackson
+		********************************************************/
 		void Update(double Time);
 
-		// If we use graphics...
+		/********************************************************
+		* @brief:	Render function - Not being used
+		* @author: 	John Jackson
+		********************************************************/
 		void Render();
 
+		/********************************************************
+		* @brief:	Responsible for polling server for messages and parsing those
+		* @author: 	John Jackson
+		********************************************************/
 		void Poll();
 
+		/********************************************************
+		* @brief:	Creates a status string from the output values struct
+		* @author: 	John Jackson
+		********************************************************/
 		std::string GetStatusString(values& V);
 
 	private:
+
+		/* Private member variables */
 		TemperatureSensor m_tempSensor;
 		Burner m_burner;
 		LevelSensor m_levelSensor;

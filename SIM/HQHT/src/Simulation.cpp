@@ -1,3 +1,10 @@
+/********************************************************
+* @file: 	Simulation.cpp
+* @brief:	Source file for Simulation class
+* @author: 	John Jackson
+* @date: 	03/22/2016
+********************************************************/
+
 #include "Simulation.h"
 
 #include <iostream>
@@ -312,8 +319,8 @@ void Simulation::Update(double Time)
 
 	OutValues.A = m_inputValve.GetValue();
 	OutValues.C = m_burner.GetValue();
-	OutValues.E = m_levelSensor.GetLevel();
-	OutValues.D = m_tempSensor.GetTemperature();
+	OutValues.D = m_levelSensor.GetLevel();
+	OutValues.E = m_tempSensor.GetTemperature();
 
 }
 

@@ -1,3 +1,10 @@
+/********************************************************
+* @file: 	LevelSensor.cpp
+* @brief:	Source file for LevelSensor class 
+* @author: 	John Jackson
+* @date: 	03/22/2016
+********************************************************/
+
 #include "LevelSensor.h"
 
 
