@@ -1,6 +1,7 @@
 var socket;
 var json = '{"A":1.0,"B":[1,0,0,0],"C":1.0,"D":0.5,"E":0.2}';
 var STATUS = JSON.parse('{"A":0.0}');
+var CONTROL = JSON.parse('{"A":0, "B":[0,0,0,0], "C":0}');
 try{
 var host = "ws://localhost:8126/foo";
 socket = new WebSocket(host);
@@ -18,7 +19,6 @@ socket.onmessage = function(msg){
 		 var rawList = rawData.split(/[\[\]\s,=]+/);
 		 var json = '';
 		 json = '{"'+rawList[0] + '":' + rawList[1] + ',"' +  rawList[2] + '":[' + rawList[3] + "," + rawList[4] + "," + rawList[5] + "," + rawList[6] + '],"' + rawList[7] + '":' + rawList[8] + ',"' + rawList[9] + '":' + rawList[10] + ',"' + rawList[11] + '":' + rawList[12] + '}';
-		 //json = '{"'+rawData[0] + '":' + rawData.substring(2,5) + ',"' +  rawData[6] + '":' + rawData.substring(8, 17) + ',"' + rawData[18] + '":' + rawData.substring(20, 23) + ',"' + rawData[24] + '":' + rawData.substring(26, 29) + ',"' + rawData[30] + '":' + rawData.substring(32, 35) + '}';
 		 STATUS = JSON.parse(json);
 		 console.log(STATUS);
 }
@@ -86,5 +86,24 @@ $(".cup").click(function(){
 	socket.send($(this).attr('id'));
 	// socket.send('POST_UI_CONTROL');
 	// socket.send('CONTROL: A=1.0, B=[0, 0, 0, 1], C=1.0');
+	var valve = $(this).attr('id');
+	if(valve[1] == '1')
+	{
+		CONTROL.B[0] = 1;
+	}
+	else if(valve[1] == '2')
+	{
+		CONTROL.B[1] = 1;
+	}
+	else if(valve[1] == '3')
+	{
+		CONTROL.B[2] = 1;
+	}
+	else if(valve[1] == '4')
+	{
+		CONTROL.B[3] = 1;
+	}
+	socket.send('POST_UI_CONTROL');
+	socket.send('CONTROL: A=1.0, B=['+ CONTROL.B[0] +", " + CONTROL.B[0] + ", " + CONTROL.B[0] +", "+ CONTROL.B[0] + '], C=1.0');
 	message('Request Sent: '+$(this).attr('id'));
 });
