@@ -312,6 +312,27 @@ void Simulation::Update(double Time)
 			}
 		}
 	}
+	// Otherwise turn the valves out
+	if (m_tempSensor.GetTemperature() < OPTIMAL_TEMP - 2.0f || m_levelSensor.GetLevel() < 0.06f)
+	{
+		OutValues.B1 = 0;
+		OutValues.B2 = 0;
+		OutValues.B3 = 0;
+		OutValues.B4 = 0;
+
+		for (auto Valve : m_OutputValves)
+		{
+			if (Valve->GetState() == Valve::State::OPEN)
+			{
+				Valve->Close();
+				std::cout << Valve->Name + " turning off..." << std::endl;
+			}
+		}
+		m_outputValve1.Close();
+		m_outputValve2.Close();
+		m_outputValve3.Close();
+		m_outputValve4.Close();
+	}
 
 	//////////////////////////////////
 	// OUTPUT VALUES /////////////////
