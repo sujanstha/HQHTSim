@@ -42,9 +42,11 @@ section.bg {
 #tank #content-level {
 	width: 100%;
 	background-color: #FFD727;
-	height: 34%;
+	height: 0%;
 	position: absolute;
 	bottom: 0px;
+	-webkit-transition: height 1s;
+    transition: height 1s;
 }
 
 #system-info {
