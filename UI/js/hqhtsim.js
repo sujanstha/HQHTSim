@@ -7,6 +7,7 @@ var wasWaiting = false;
 var burnerMalf = false;
 var leakMalf = false;
 var burnerValue = 0.0;
+var drainClicked = false;
 try{
 var host = "ws://localhost:8126/foo";
 socket = new WebSocket(host);
@@ -50,6 +51,11 @@ function message(msg){
 setInterval(function(){ 
 	var waitTime = (83-STATUS.E)/6;
 	socket.send('GET_BACKEND_STATUS');
+	if (drainClicked) 
+	{
+		STATUS.D = 0.0;
+		console.log("drainClicked: " + STATUS.D);
+	}
 	$("#content-level").css("height", STATUS.D*100+"%");           
 	// $("#status").html("Normal");
 	if (STATUS.A == 1) 
@@ -64,7 +70,6 @@ setInterval(function(){
 	$("#temperature").html(STATUS.E);
 	$("#burner").html(STATUS.C);
 	$("#open-valves").html(" B1: " + STATUS.B[0] + ", B2: " + STATUS.B[1] + ", B3: " + STATUS.B[2] + ", B4: " + STATUS.B[3]);
-	console.log("Burner: " + burnerMalf);
 	if (burnerMalf && leakMalf) 
 	{
 		$("#errors").css("color", "red");
@@ -237,3 +242,10 @@ $("#leak-malf").click(function(){
 		}, 1500);
 	}
 });
+
+$("#drain").click(function(){
+	setTimeout(function(){
+	drainClicked = true;
+	}, 2000);
+});
+
