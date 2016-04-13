@@ -8,6 +8,11 @@ var burnerMalf = false;
 var leakMalf = false;
 var burnerValue = 0.0;
 var drainClicked = false;
+var leakCoffeeVal = 0.0;
+var leakIdentified = 0;
+
+/* Websocket start */
+
 try{
 var host = "ws://localhost:8126/foo";
 socket = new WebSocket(host);
@@ -43,6 +48,9 @@ socket.onclose = function(){
 		 message('Error: '+exception);
 }
 
+/* Websocket end */
+
+/* Prints the message to Browser console */
 function message(msg){
 	console.log(msg);
 }
@@ -70,22 +78,57 @@ setInterval(function(){
 	$("#temperature").html(STATUS.E);
 	$("#burner").html(STATUS.C);
 	$("#open-valves").html(" B1: " + STATUS.B[0] + ", B2: " + STATUS.B[1] + ", B3: " + STATUS.B[2] + ", B4: " + STATUS.B[3]);
+	if (leakIdentified == 1) 
+	{
+		leakCoffeeVal = STATUS.D;
+		console.log("VAl" + leakCoffeeVal);
+	}
 	if (burnerMalf && leakMalf) 
 	{
+		leakIdentified = leakIdentified + 1;
 		$("#errors").css("color", "red");
 		$("#errors").html("<p>Burner Malfunction</p><p>Leak Malfunction</p>");
 		$("#burner").html(burnerValue);
+		if (leakIdentified > 1) 
+		{
+			$("#coffee-level").html(leakCoffeeVal);
+			$("#content-level").css("height", leakCoffeeVal*100+"%"); 
+		}
+		if (leakCoffeeVal > 0.1) 
+		{
+			leakCoffeeVal = leakCoffeeVal - 0.1;
+		}
+		else if(leakCoffeeVal < 0.1 || leakCoffeeVal == 0.1)
+		{
+			leakCoffeeVal = 0;
+		}
 	}
 	else if (burnerMalf) 
 	{
 		$("#errors").css("color", "red");
 		$("#errors").html("<p>Burner Malfunction</p>");
 		$("#burner").html(burnerValue);
+		
 	}
 	else if (leakMalf) 
 	{
+		leakIdentified = leakIdentified + 1;
+		console.log("Hello" + leakIdentified);
 		$("#errors").css("color", "red");
 		$("#errors").html("<p>Leak Malfunction</p>");
+		if (leakIdentified > 1) 
+		{
+			$("#coffee-level").html(leakCoffeeVal);
+			$("#content-level").css("height", leakCoffeeVal*100+"%"); 
+		}
+		if (leakCoffeeVal > 0.1) 
+		{
+			leakCoffeeVal = leakCoffeeVal - 0.1;
+		}
+		else if(leakCoffeeVal < 0.1 || leakCoffeeVal == 0.1)
+		{
+			leakCoffeeVal = 0;
+		}
 	}
 	else
 	{
@@ -139,8 +182,7 @@ setInterval(function(){
 	console.log(CONTROL);
 }, 1000);
 
-// Toggle Cup Size on button click
-
+// Toggle Cup Size on button 1 click
 $("#button1").click(function(){
 	if (!WAIT) 
 	{
@@ -152,6 +194,8 @@ $("#button1").click(function(){
 	    }
 	}
 });
+
+// Toggle Cup Size on button 2 click
 $("#button2").click(function(){
 	if (!WAIT) 
 	{	
@@ -163,6 +207,8 @@ $("#button2").click(function(){
 	    }
 	}
 });
+
+// Toggle Cup Size on button 3 click
 $("#button3").click(function(){
 	if (!WAIT) 
 	{
@@ -174,6 +220,8 @@ $("#button3").click(function(){
 	    }
 	}
 });
+
+// Toggle Cup Size on button 4 click
 $("#button4").click(function(){
 	if (!WAIT) 
 	{
@@ -186,6 +234,7 @@ $("#button4").click(function(){
 	}
 });
 
+/* Sends Control signal Websocket server when user selects the cup size */
 $(".cup").click(function(){
 	if (!WAIT) 
 	{
@@ -214,6 +263,7 @@ $(".cup").click(function(){
 	}
 });
 
+/* Handle Burner malfunction */
 $("#burner-malf").click(function(){
 	if (burnerMalf) {
 		setTimeout(function(){
@@ -229,6 +279,7 @@ $("#burner-malf").click(function(){
 	}
 });
 
+/* Handle Leak malfunction */
 $("#leak-malf").click(function(){
 	if (leakMalf) {
 		setTimeout(function(){
@@ -243,6 +294,7 @@ $("#leak-malf").click(function(){
 	}
 });
 
+/* Handle Drain */
 $("#drain").click(function(){
 	setTimeout(function(){
 	drainClicked = true;
