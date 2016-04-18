@@ -4,6 +4,7 @@ var STATUS = JSON.parse('{"A":0.0,"B":[0,0,0,0],"C":0.0,"D":0.0,"E":0.0}');
 var CONTROL = JSON.parse('{"A":0, "B":[0,0,0,0], "C":0}');
 var WAIT = false;
 var wasWaiting = false;
+var inputValveOpen = true;
 var burnerMalf = false;
 var leakMalf = false;
 var burnerValue = 0.0;
@@ -24,7 +25,7 @@ socket.onopen = function(){
 }
 
 socket.onmessage = function(msg){
-		 message('Received: '+msg.data);
+		 //message('Received: '+msg.data);
 		 var rawData = msg.data.replace(/\s/g, "").replace('STATUS:', '');
 		 var rawList = rawData.split(/[\[\]\s,=]+/);
 		 var json = '';
@@ -34,10 +35,6 @@ socket.onmessage = function(msg){
 		 CONTROL.B[1] = STATUS.B[1];
 		 CONTROL.B[2] = STATUS.B[2];
 		 CONTROL.B[3] = STATUS.B[3];
-		 console.log(CONTROL.B[0]);
-		 console.log(CONTROL.B[1]);
-		 console.log(CONTROL.B[2]);
-		 console.log(CONTROL.B[3]);
 }
 
 socket.onclose = function(){
@@ -62,7 +59,6 @@ setInterval(function(){
 	if (drainClicked) 
 	{
 		STATUS.D = 0.0;
-		console.log("drainClicked: " + STATUS.D);
 	}
 	$("#content-level").css("height", STATUS.D*100+"%");           
 	// $("#status").html("Normal");
@@ -81,7 +77,6 @@ setInterval(function(){
 	if (leakIdentified == 1) 
 	{
 		leakCoffeeVal = STATUS.D;
-		console.log("VAl" + leakCoffeeVal);
 	}
 	if (burnerMalf && leakMalf) 
 	{
@@ -113,7 +108,6 @@ setInterval(function(){
 	else if (leakMalf) 
 	{
 		leakIdentified = leakIdentified + 1;
-		console.log("Hello" + leakIdentified);
 		$("#errors").css("color", "red");
 		$("#errors").html("<p>Leak Malfunction</p>");
 		if (leakIdentified > 1) 
@@ -179,7 +173,7 @@ setInterval(function(){
 		}
 	}
 	console.log(STATUS);
-	console.log(CONTROL);
+	//console.log(CONTROL);
 }, 1000);
 
 // Toggle Cup Size on button 1 click
@@ -258,8 +252,24 @@ $(".cup").click(function(){
 		}
 		socket.send('POST_UI_CONTROL');
 		socket.send('CONTROL: A=1.0, B=['+ CONTROL.B[0] +", " + CONTROL.B[1] + ", " + CONTROL.B[2] +", "+ CONTROL.B[3] + '], C=1.0');
-		message('Request Sent: '+ 'CONTROL: A=1.0, B=['+ CONTROL.B[0] +", " + CONTROL.B[1] + ", " + CONTROL.B[2] +", "+ CONTROL.B[3] + '], C=1.0');
+		//message('Request Sent: '+ 'CONTROL: A=1.0, B=['+ CONTROL.B[0] +", " + CONTROL.B[1] + ", " + CONTROL.B[2] +", "+ CONTROL.B[3] + '], C=1.0');
 
+	}
+});
+
+/* Opens/Closes input valve */
+$("#input-ctrl").click(function(){
+	if (inputValveOpen) // Closes when open
+	{
+		socket.send('POST_UI_CONTROL');
+		socket.send('CONTROL: A=0.0, B=['+ CONTROL.B[0] +", " + CONTROL.B[1] + ", " + CONTROL.B[2] +", "+ CONTROL.B[3] + '], C=1.0');
+		message('Request Sent:' + 'CONTROL: A=0.0, B=['+ CONTROL.B[0] +", " + CONTROL.B[1] + ", " + CONTROL.B[2] +", "+ CONTROL.B[3] + '], C=1.0');
+	}
+	else // Opens when close
+	{
+		socket.send('POST_UI_CONTROL');
+		socket.send('CONTROL: A=1.0, B=['+ CONTROL.B[0] +", " + CONTROL.B[1] + ", " + CONTROL.B[2] +", "+ CONTROL.B[3] + '], C=1.0');
+		message('Request Sent:' + 'CONTROL: A=1.0, B=['+ CONTROL.B[0] +", " + CONTROL.B[1] + ", " + CONTROL.B[2] +", "+ CONTROL.B[3] + '], C=1.0');
 	}
 });
 
